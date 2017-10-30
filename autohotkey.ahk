@@ -8,10 +8,7 @@ SetBatchLines -1
 ;menu,tray,Icon,hotkey.ico
 
 GroupAdd Browser, ahk_class IEFrame
-GroupAdd Browser, ahk_class Chrome_WidgetWin_1
-GroupAdd Browser, ahk_class Chrome_WidgetWin_2
-GroupAdd Browser, ahk_class MozillaWindowClass
-GroupAdd Browser, ahk_class ApplicationFrameWindow
+GroupAdd Browser, ahk_exe chrome.exe
 
 GroupAdd captha, ahk_class Microsoft-Windows-Tablet-SnipperToolbar
 GroupAdd captha, ahk_class Microsoft-Windows-Tablet-SnipperEditor
@@ -21,9 +18,8 @@ GroupAdd Mclose, ahk_class FM
 ;================================================================================================
 ; 오토핫키 제어
 ;================================================================================================
-$#-:: Reload
-$#=:: Edit
-$#BS:: Edit
+$#F12:: Reload
+$#F11:: Edit
 
 ;================================================================================================
 ; 윈도우 단축키-
@@ -46,7 +42,6 @@ $#F::
 return
 
 ; -----------------------------------------------------볼륨제어
-$#F12::SoundSet, +1, , mute	; 볼륨 조절
 $^!WheelUp::SoundSet +10	; 볼륨 조절
 $^!WheelDown::SoundSet -10	; 볼륨 조절
 ; -----------------------------------------------------
