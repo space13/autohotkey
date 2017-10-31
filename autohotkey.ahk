@@ -7,8 +7,9 @@ SetBatchLines -1
 ;everything 설치 확인
 ;menu,tray,Icon,hotkey.ico
 
-GroupAdd Browser, ahk_class IEFrame
-GroupAdd Browser, ahk_exe chrome.exe
+GroupAdd Browser, ahk_exe iexplore.exe ; 익스플로러
+GroupAdd Browser, ahk_exe chrome.exe ;크롬
+GroupAdd Browser, ahk_exe ApplicationFrameHost.exe ;엣지
 
 GroupAdd captha, ahk_class Microsoft-Windows-Tablet-SnipperToolbar
 GroupAdd captha, ahk_class Microsoft-Windows-Tablet-SnipperEditor
@@ -24,14 +25,17 @@ $#F11:: Edit
 ;================================================================================================
 ; 윈도우 단축키-
 ;================================================================================================
+
+; Alt + F4 path
+$!`::!F4
+
+; 절전모드
 ^!Numpad0:: DllCall("PowrProf\SetSuspendState", "int", 0, "int", 0, "int", 0)
+; 전원종료
 ^#!Numpad0:: Shutdown, 1
-; ^F1:: run, C:\nircmd.exe monitor off
 
 $#Enter::#Tab
 $#Rbutton::#Tab
-
-$capslock:: Lbutton
 
 $#F::
   try{
@@ -46,7 +50,6 @@ $^!WheelUp::SoundSet +10	; 볼륨 조절
 $^!WheelDown::SoundSet -10	; 볼륨 조절
 ; -----------------------------------------------------
 
-+space::Send, {vk15sc138}	; 한영전환
 
 +Backspace::Sendinput, +{home}{del}
 $#WheelDown::#Tab
@@ -80,9 +83,6 @@ $PrintScreen:: run, ms-penworkspace://Capture
 	}
 return
 
-;================================================================================================
-; 윈도우 단축키끝
-;================================================================================================
 
 ;===================================================
 ; 자동치환
@@ -90,9 +90,9 @@ return
 ;:*:@g::@gmail.com
 
 
-;--------------------------------------------------------------------
-;브라우저
-;--------------------------------------------------------------------
+;===================================================
+; 브라우저 그룹 단축키 ( 크롬, 엣지, 익스플로러)
+;===================================================
 #IfWinActive ahk_group Browser
 
 ~Shift Up::
