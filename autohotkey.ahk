@@ -11,11 +11,6 @@ GroupAdd Browser, ahk_exe iexplore.exe ; 익스플로러
 GroupAdd Browser, ahk_exe chrome.exe ;크롬
 GroupAdd Browser, ahk_exe ApplicationFrameHost.exe ;엣지
 
-GroupAdd captha, ahk_class Microsoft-Windows-Tablet-SnipperToolbar
-GroupAdd captha, ahk_class Microsoft-Windows-Tablet-SnipperEditor
-GroupAdd Mclose, ahk_class CabinetWClass
-GroupAdd Mclose, ahk_class FM
-
 ;================================================================================================
 ; 오토핫키 제어
 ;================================================================================================
@@ -61,33 +56,15 @@ $#numpad5:: run, calc.exe
 ;메모장
 $#numpad2:: run, C:\Program Files (x86)\Notepad++\notepad++.exe
 
-
 ;탐색기
 $#E:: Run, explorer.exe /n`,
-
 
 ; 스크릿샷키 맵핑 윈도우 잉크 화면스케치
 $PrintScreen:: run, ms-penworkspace://Capture
 
-
 ;qBitTorrent
 #q:: run, C:\Program Files (x86)\qBittorrent\qbittorrent.exe
 
-~control Up::
-	If (A_PriorHotKey = A_ThisHotKey and A_TimeSincePriorHotkey < 200){
-		InputBox, UserInput, Phone Number, Please enter a phone number.
-		if ErrorLevel
-			return
-		else
-			_cs_command(UserInput)
-	}
-return
-
-
-;===================================================
-; 자동치환
-;===================================================
-;:*:@g::@gmail.com
 
 
 ;===================================================
@@ -99,52 +76,18 @@ return
 if (A_PriorHotkey != "~Shift Up") || (A_TimeSincePriorHotkey > 200)
 	return
 else
-	Send,^t
-	
+	Sendinput,^t
 return
 
-
-$F1::!Left
+$F1::!Left  ;뒤로가기
 $F2::^+tab	;왼쪽탭으로 이동
 $F3::^tab	;오른쪽탭으로 이동
 $F4::^F4	;탭 닫기
-$F12::^t
-
-^left::^+tab	;왼쪽탭으로 이동
-^right::^tab	;오른쪽탭으로 이동
-
 
 $+WheelUp::send,{Home}
 $+WheelDown::send,{End}
-
-
-
-
-
-;Rbutton & wheelup::sendinput, ^{tab}
-;Rbutton & wheeldown::sendinput, ^+{tab}
-
-
 
 #IfWinActive
 ;--------------------------------------------------------------------
 ;브라우저 끝
 ;--------------------------------------------------------------------
-
-
-
-
-
-;************************************************************************************ 
-; 개인함수
-;************************************************************************************ 
-
-_cs_command( cmd ) {
-	msgbox, %cmd%
-}
-
-
-
-
-
-
