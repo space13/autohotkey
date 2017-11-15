@@ -8,6 +8,7 @@ SetBatchLines -1
 ;menu,tray,Icon,hotkey.ico
 
 GroupAdd Browser, ahk_exe iexplore.exe ; 익스플로러
+GroupAdd Browser, ahk_exe firefox.exe ;파이어폭스
 GroupAdd Browser, ahk_exe chrome.exe ;크롬
 GroupAdd Browser, ahk_exe ApplicationFrameHost.exe ;엣지
 
